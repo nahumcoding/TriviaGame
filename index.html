@@ -19,9 +19,7 @@
     
 <!-- JAVASCRIPT -->
 
-    <!-- jQuery (necessary for Bootstrap’s JavaScript plugins) -->
-    <script src=“https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js”></script> 
-    <!-- Latest compiled and minified JavaScript -->
+
    
     <!-- My JS file -->
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -35,38 +33,44 @@
 
       <div class="container">
           <h1>Trivia</h1>
-          <h3>Instructions</h3>
-          <p>You have 30 seconds to answer five questions.</p>
+          <h2>Instructions</h2>
+          <p>You have 1:00 seconds to answer five questions.</p>
+          <div id="timer">
+			<h3>Time Remaining: <span id='counter'>1:00</span></h3>
+		</div>
           <div class="jumbotron">
-              <div id="q1">1. Lightning never strikes in the same place twice.</div>
+                <div class="container" id="questions">
+              <div>
+              <p>1. Lightning never strikes in the same place twice.<p></div>
               True:
               <input type="radio" name="q1" value="t"> 
               False: 
               <input type="radio" name="q1" value="f"> 
-              <p id="q2">2. Goldfish only have a memory of three seconds.</p>
+              <p>2. Goldfish only have a memory of three seconds.</p>
               True:
               <input type="radio" name="q2" value="t"> 
               False: 
               <input type="radio" name="q2" value="f"> 
   
-              <p id="q3">3. Birds are dinosaurs.</p>
+              <p>3. Birds are dinosaurs.</p>
                   True:
                   <input type="radio" name="q3" value="t"> 
                   False: 
                   <input type="radio" name="q3" value="f"> 
   
-              <p id="q4">4. The owner of the company that makes Segways died after accidentally driving his Segway off a cliff.</p>
+              <p>4. The owner of the company that makes Segways died after accidentally driving his Segway off a cliff.</p>
                   True:
                   <input type="radio" name="q4" value="t"> 
                   False: 
                   <input type="radio" name="q4" value="f"> 
   
-              <p id="q5">5. It costs the U.S. Mint more to make pennies and nickels than the coins are actually worth.</p>
+              <p>5. It costs the U.S. Mint more to make pennies and nickels than the coins are actually worth.</p>
                   True:
                   <input type="radio" name="q5" value="t"> 
                   False: 
                   <input type="radio" name="q5" value="f"> 
           </div> 
+          <button class="button-primary" id="results" style="margin-top: 50px;">Get Results!</button>
          <br>
   
           <div class="w/l">
@@ -74,15 +78,9 @@
               <div>Losses</div>
           </div>
       </div>
-      <script src="assets/javascript/app.js"></script>
       
 
-
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+      <script src="assets/javascript/game.js"></script>
 
   </body>
 </html>

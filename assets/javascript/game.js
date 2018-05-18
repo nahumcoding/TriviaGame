@@ -2,63 +2,87 @@
 
 $(document).ready(function() {
 
-	var correct = 0;
-	var incorrect = 0;
-	var time = 30;
+	/*===================Variables===================*/
+
+var correctGuesses = 0
+var incorrectGuesses = 0
+var unanswered = 0
+var counter = 60
+
+var myVar;
+
+	var answers = ['true', 'false', 'true', 'ture']
+	var newList = []
+	
+
+
+/*==================Functions===================*/
+
+function countdown () {
+	counter--
+	$('#counter').text(counter);
+
+	if (counter == 0) {
+		$('#questions').empty()
+		clearInterval(myVar);
+		compareAnswers();
+		displayResults();
+	}
+}
+
+function timer () {
+	myVar = setInterval(countdown, 1000);
+}
+
+function compareAnswers () {
+	for (var i = 0; i < answers.length; i++) {
+		if (newList[i] === undefined) {
+			unanswered++
+		}
+		else if ((answers[i] === newList[i])) {
+			correctGuesses++
+		}
+		else {
+			incorrectGuesses ++
+		}
+	}
+}
+
+function displayResults() {
+
+	$('#questions').append('<p>Correct Guesses: ' + correctGuesses + '</p>')
+	$('#questions').append('<p>Incorrect Guesses: ' + incorrectGuesses + '</p>')
+	$('#questions').append('<p>Unanswered: ' + unanswered + '</p>')
+}
+
+timer()
 
 
 
-	var display = function() {
-		$("#timer").text(time);
-		$("#correct").text(correct);
-		$("#incorrect").text(incorrect);
-	};
 
-	var reset = function() {
-		correct = 0;
-		incorrect = 0;
-		time = 30;
-		display();
+/*===================On Click Events===========*/
 
-		
-	};
+$('#results').click(function () {
+	$('#questions').empty();
+	clearInterval(myVar);
+	compareAnswers();
+	displayResults();
 
 
-	var checkAnswer = function() {
-		clearInterval(x);
-		
-		for(var i = 1; i <= 5; i++) {
-			var answer = $("input[name=q" + i + "]:checked").val();
-			console.log(typeof answer);
+})
 
-			if (answer === "true") {
-				correct++;
-			}
-			else {
-				incorrect++;
-			};
+$("input[type='radio']").click(function(){
 
-		};	
-		display();
-	};
+	var qnum = $(this).attr('name')
 
+	var answer = $(this).attr('data-name')
 
-	$("#btn2").on("click", reset);
-	console.log("message");
+	console.log(qnum)
+	console.log(answer)
 
-	$("#btn").on("click", checkAnswer);
+	newList[qnum -1] = answer
 
-//timer
-var x = setInterval(function(){
-
-	time--;
-	$("#timer").text(time);
-	if (time === 0) {
-		
-		checkAnswer();
-	};
-},1000)
-
+	console.log(newList)
 
 
 });
